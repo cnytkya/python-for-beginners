@@ -3,7 +3,6 @@
 # Konu: for döngüsü + if / elif / else
 # Amaç: Python temelleri(değişkenler,sözlükler,döngüler,koşullar)
 # ============================================================
-
 # Yemek menüsü: {numara: (ad, fiyat)}
 # Sözlük(Dictonary) yapısı kullanarak ürün kodlarını(Key) ve ürün bilgilerini(Value(değer)) tutuyoruz.
 menu = {
@@ -21,6 +20,7 @@ icecekler = {
     "C": ("Kola",      20),
     "D": ("Limonata",  25),
 }
+# siparisler = []
 
 # adım 1: Programı başlat. kullanıcıyı ilk karşılayan görsel
 print("╔══════════════════════════════════╗")
@@ -28,6 +28,7 @@ print("║  🍽️  RESTORAN SİPARİŞ SİSTEMİ     ║")
 print("╚══════════════════════════════════╝")
 
 masa_no = int(input("\nMasa Numaranız: "))
+# kisi_sayi = int(input("Kişi sayısını giriniz: "))
 
 # 2. ADIM — YEMEK MENÜSÜNÜ GÖSTER
 print("\n===ANA YEMEKLER===")
@@ -92,6 +93,54 @@ else:
     indirim_oran = 0
     indirim_mesaj = "İndirim Yok"
 indirim_tutari = ara_toplam * indirim_oran
-print(f"indirim tutarı: {indirim_tutari}")
+# print(f"indirim tutarı: {indirim_tutari}")
 
+# 9. ADIM — VIP MASA SERVİS ÜCRETİ
+if masa_no > 10:
+    servis_ucreti = ara_toplam * 0.10
+    vip_mesaj = "(VIP)"
+else:
+    servis_ucreti = 0
+    vip_mesaj = ""
+
+genel_toplam = ara_toplam - indirim_tutari + servis_ucreti
+
+# 10. ADIM — ÖDEME YÖNTEMİ SEÇ
+print("\nÖdeme Yöntemi: 1-Nakit  2-Kart   3-Temassız")
+secim_odeme = input("Seçiminiz: ")
+if secim_odeme == "1":
+    odeme = "Nakit"
+elif secim_odeme == "2":
+    odeme = "Kart"
+elif secim_odeme == "3":
+    odeme = "Temassız"
+else:
+    odeme = "Ödeme Yöntemi Belirtilmedi!"
+
+# 11. ADIM — FİŞİ YAZDIR
+print("╔══════════════════════════════════╗")
+print("║            🧾 FİŞ                ║")
+print("╚══════════════════════════════════╝")
+print(f"Masa No: {masa_no}{vip_mesaj}")
+print(f"Kişi sayısı: {kisi_sayisi}")
+print("--- Sipariş ---")
+
+# dor döngüsüyle sipariş kalemlerini yazdır.
+siparisler = [
+    (yemek_adi,   yemek_fiyat,   yemek_toplam),
+    (icecek_adi,  icecek_fiyat,  icecek_toplam)
+]
+for ad, fiyat, toplam in siparisler:
+    print(f"{ad:<14}: {fiyat:>4} TL x {kisi_sayisi} = {toplam:>5} TL")
+print("-"*40)
+print(f"{'Ara Toplam':<30} {ara_toplam:>6} TL")
+if indirim_tutari > 0:
+    print(f"{indirim_mesaj:<30} {-indirim_tutari:>6} TL")
+if servis_ucreti > 0:
+    print(f"{'VIP Servis Ücreti (%10)':<30} {servis_ucreti:+6} TL")
+print("-"*40)
+print(f"{'GENEL TOPLAM :':<30} {genel_toplam:>6} TL")
+print("-"*40)
+print(f"Ödeme        : {odeme}")
+print("Afiyet olsun! 🍽️")
 
