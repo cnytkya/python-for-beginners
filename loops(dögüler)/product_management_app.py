@@ -1,6 +1,7 @@
 # ürün yönetim uygulaması
 # konu: CRUD işlemleri -> Create,Read,Update,Delete
-
+# from ogrenci_yonetim_app import veriyi_kaydet # DRY(kendini tekrar etme)
+# from ogrenci_yonetim_app import veriyi_yukle
 envanter = [
     {"ad": "Laptop","fiyat":45000,"stok":10},
     {"ad": "Mouse","fiyat":2500,"stok":50}
