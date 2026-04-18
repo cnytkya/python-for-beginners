@@ -63,3 +63,7 @@
 # AKSİ TAKDİRDE (Geçersiz Seçim):
 
 # "Lütfen 1-5 arasında bir rakam giriniz!" uyarısı ver.
+
+
+
+# NOT: KAYITLARI JSON DOSYASINDA TUTALIM
